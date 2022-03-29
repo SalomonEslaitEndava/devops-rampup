@@ -5,7 +5,7 @@ module "networking" {
   auto_create_subnetworks = false
 }
 
-module "management_subnet" {
+module "management-subnet" {
   source = "./src/modules/network"
 
   subnet_name              = "management-subnet"
@@ -23,7 +23,7 @@ module "management_subnet" {
 #   private_ip_google_access = false
 # }
 
-module "ssh_firewall_rule" {
+module "ssh_firewall-rule" {
   source = "./src/modules/network"
 
   firewall_rule_name = "ssh-rule"
@@ -32,7 +32,7 @@ module "ssh_firewall_rule" {
   ports              = ["22"]
 }
 
-module "jenkins_rule" {
+module "jenkins-rule" {
   source = "./src/modules/network"
 
   firewall_rule_name = "jenkins-rule"
