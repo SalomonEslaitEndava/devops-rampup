@@ -1,12 +1,12 @@
 module "networking" {
-  source = "./src/modules/vpc_network"
+  source = "./src/modules/network"
 
   networkname             = "rampup_vpc"
   auto_create_subnetworks = false
 }
 
 module "management_subnet" {
-  source = "./src/modules/subnet"
+  source = "./src/modules/network"
 
   subnet_name              = "management_subnet"
   subnet_cidr_range        = "10.0.0.0/24"
@@ -15,7 +15,7 @@ module "management_subnet" {
 }
 
 module "kubernetes_subnet" {
-  source = "./src/modules/subnet"
+  source = "./src/modules/network"
 
   subnet_name              = "kubernetes_subnet"
   subnet_cidr_range        = "10.0.1.0/24"
@@ -24,18 +24,18 @@ module "kubernetes_subnet" {
 }
 
 module "ssh_firewall_rule" {
-  source = "./src/modules/firewall_rules"
+  source = "./src/modules/network"
 
-  firewall_rule_name = "ssh-rule"
+  firewall_rule_name = "ssh_rule"
   source_ranges      = ["0.0.0.0/0"]
   protocol           = "tcp"
   ports              = ["22"]
 }
 
 module "jenkins_firewall_rule" {
-  source = "./src/modules/firewall_rules"
+  source = "./src/modules/network"
 
-  firewall_rule_name = "ssh-rule"
+  firewall_rule_name = "jenkins_rule"
   source_ranges      = ["10.0.0.0/24"]
   protocol           = "tcp"
   ports              = ["50000"]
