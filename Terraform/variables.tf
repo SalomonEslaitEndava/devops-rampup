@@ -1,6 +1,7 @@
 variable "GOOGLE_CREDENTIALS" {
-  
+  description = "google credentials from service account to terraform cloud"
 }
+
 
 variable "project" {
   default = "endava-rampup-second-part"
@@ -10,4 +11,7 @@ variable "region" {
 }
 variable "zone" {
   default = "us-west1-a"
+}
+variable "networkname" {
+  default = "iac-network"
 }
