@@ -14,14 +14,14 @@ module "management_subnet" {
   private_ip_google_access = false
 }
 
-module "kubernetes_subnet" {
-  source = "./src/modules/network"
+# module "kubernetes_subnet" {
+#   source = "./src/modules/network"
 
-  subnet_name              = "kubernetes-subnet"
-  subnet_cidr_range        = "10.0.1.0/24"
-  region                   = "us-west1"
-  private_ip_google_access = false
-}
+#   subnet_name              = "kubernetes-subnet"
+#   subnet_cidr_range        = "10.0.1.0/24"
+#   region                   = "us-west1"
+#   private_ip_google_access = false
+# }
 
 module "ssh_firewall_rule" {
   source = "./src/modules/network"
