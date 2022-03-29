@@ -32,7 +32,7 @@ module "ssh_firewall_rule" {
   ports              = ["22"]
 }
 
-module "jenkins_firewall_rule" {
+module "jenkins_rule" {
   source = "./src/modules/network"
 
   firewall_rule_name = "jenkins_rule"
