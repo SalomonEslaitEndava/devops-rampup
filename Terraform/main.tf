@@ -8,7 +8,7 @@ module "networking" {
 module "management_subnet" {
   source = "./src/modules/network"
 
-  subnet_name              = "management_subnet"
+  subnet_name              = "management-subnet"
   subnet_cidr_range        = "10.0.0.0/24"
   region                   = "us-west1"
   private_ip_google_access = false
@@ -17,7 +17,7 @@ module "management_subnet" {
 module "kubernetes_subnet" {
   source = "./src/modules/network"
 
-  subnet_name              = "kubernetes_subnet"
+  subnet_name              = "kubernetes-subnet"
   subnet_cidr_range        = "10.0.1.0/24"
   region                   = "us-west1"
   private_ip_google_access = false
@@ -26,7 +26,7 @@ module "kubernetes_subnet" {
 module "ssh_firewall_rule" {
   source = "./src/modules/network"
 
-  firewall_rule_name = "ssh_rule"
+  firewall_rule_name = "ssh-rule"
   source_ranges      = ["0.0.0.0/0"]
   protocol           = "tcp"
   ports              = ["22"]
