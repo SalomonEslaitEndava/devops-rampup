@@ -22,6 +22,12 @@ variable "subnet_cidr_range" {
   default     = ""
 }
 
+variable "network" {
+  description = "network name"
+  type = string
+  default = ""
+}
+
 variable "region" {
   description = "region"
   type        = string
