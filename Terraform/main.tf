@@ -1,7 +1,7 @@
 module "networking" {
   source = "./src/modules/network"
 
-  networkname             = "rampup_vpc"
+  networkname             = "rampup-vpc"
   auto_create_subnetworks = false
 }
 
