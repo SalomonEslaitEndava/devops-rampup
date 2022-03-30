@@ -13,19 +13,19 @@ variable "auto_create_subnetworks" {
 variable "subnet_name" {
   description = "subnet name"
   type        = string
-  default     = "hola"
+  default     = "default-name"
 }
 
 variable "subnet_cidr_range" {
   description = "subnet cidr range"
   type        = string
-  default     = "10.0.0.0/24"
+  default     = "10.0.1.0/24"
 }
 
 variable "network" {
   description = "network name"
   type = string
-  default = "rampup-vpc"
+  default = ""
 }
 
 variable "region" {

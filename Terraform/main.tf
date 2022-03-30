@@ -14,7 +14,7 @@ module "management-subnet" {
   region                   = "us-west1"
   private_ip_google_access = false
 
-  depends_on = [module.networking]
+  # depends_on = [module.networking]
 }
 
 # module "kubernetes_subnet" {
