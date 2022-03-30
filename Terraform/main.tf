@@ -13,6 +13,8 @@ module "management-subnet" {
   network                  = module.networking.network-name
   region                   = "us-west1"
   private_ip_google_access = false
+
+  depends_on = [module.networking]
 }
 
 # module "kubernetes_subnet" {
