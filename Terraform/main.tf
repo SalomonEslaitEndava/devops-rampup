@@ -6,7 +6,7 @@ module "networking" {
 }
 
 module "management-subnet" {
-  source = "./src/modules/network"
+  source = "./src/modules/subnet"
 
   subnet_name              = "management-subnet"
   subnet_cidr_range        = "10.0.0.0/24"
