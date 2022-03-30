@@ -25,7 +25,7 @@ variable "subnet_cidr_range" {
 variable "network" {
   description = "network name"
   type = string
-  default = ""
+  default = "rampup-vpc"
 }
 
 variable "region" {
