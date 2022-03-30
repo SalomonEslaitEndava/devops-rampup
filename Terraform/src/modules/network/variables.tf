@@ -13,13 +13,13 @@ variable "auto_create_subnetworks" {
 variable "subnet_name" {
   description = "subnet name"
   type        = string
-  default     = ""
+  default     = "hola"
 }
 
 variable "subnet_cidr_range" {
   description = "subnet cidr range"
   type        = string
-  default     = ""
+  default     = "10.0.0.0/24"
 }
 
 variable "network" {
