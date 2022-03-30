@@ -14,7 +14,7 @@ module "management-subnet" {
   region                   = "us-west1"
   private_ip_google_access = false
 
-  # depends_on = [module.networking]
+  depends_on = [module.networking]
 }
 
 # module "kubernetes_subnet" {
@@ -26,14 +26,17 @@ module "management-subnet" {
 #   private_ip_google_access = false
 # }
 
-# module "ssh_firewall-rule" {
-#   source = "./src/modules/network"
+module "ssh_firewall-rule" {
+  source = "./src/modules/firewall-rules"
 
-#   firewall_rule_name = "ssh-rule"
-#   source_ranges      = ["0.0.0.0/0"]
-#   protocol           = "tcp"
-#   ports              = ["22"]
-# }
+  firewall_rule_name = "ssh-rule"
+  network            = module.networking.network-name
+  source_ranges      = ["0.0.0.0/0"]
+  protocol           = "tcp"
+  ports              = ["22"]
+
+  depends_on = [module.networking]
+}
 
 # module "jenkins-rule" {
 #   source = "./src/modules/network"
