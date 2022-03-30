@@ -21,3 +21,9 @@ variable "ports" {
   type        = list(string)
   default     = []
 }
+
+variable "network" {
+  description = "network name"
+  type = string
+  default = ""
+}
