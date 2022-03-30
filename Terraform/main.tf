@@ -8,9 +8,9 @@ module "networking" {
 module "management-subnet" {
   source = "./src/modules/network"
 
-  subnet_name              = "management-subnet"
+  subnet_name              = "managementsubnet"
   subnet_cidr_range        = "10.0.0.0/24"
-network = module.networking.network-name 
+  network                  = module.networking.network-name
   region                   = "us-west1"
   private_ip_google_access = false
 }
