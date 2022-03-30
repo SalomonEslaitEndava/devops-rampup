@@ -5,15 +5,15 @@ module "networking" {
   auto_create_subnetworks = false
 }
 
-# module "management-subnet" {
-#   source = "./src/modules/network"
+module "management-subnet" {
+  source = "./src/modules/network"
 
-#   subnet_name              = "management-subnet"
-#   subnet_cidr_range        = "10.0.0.0/24"
-#  network = module.network.network 
-#   region                   = "us-west1"
-#   private_ip_google_access = false
-# }
+  subnet_name              = "management-subnet"
+  subnet_cidr_range        = "10.0.0.0/24"
+network = module.network.network 
+  region                   = "us-west1"
+  private_ip_google_access = false
+}
 
 # module "kubernetes_subnet" {
 #   source = "./src/modules/network"
