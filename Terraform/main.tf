@@ -55,8 +55,8 @@ module "cloud-nat"{
   source = "./src/modules/nat"
 
   router-name = "rampup-router"
-  subnet-region = module.kubernetes_subnet.subnet-region
-  network = module.networking.network-id
+  subnet-region = module.kubernetes_subnet.region
+  network-id = module.networking.network-id
 
   nat-name = "rampup nat"
 }
