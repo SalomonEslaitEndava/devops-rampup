@@ -1,14 +1,3 @@
-# resource "google_compute_network" "net" {
-#   name = "my-network"
-# }
-
-# resource "google_compute_subnetwork" "subnet" {
-#   name          = "my-subnetwork"
-#   network       = google_compute_network.net.id
-#   ip_cidr_range = "10.0.0.0/16"
-#   region        = "us-central1"
-# }
-
 resource "google_compute_router" "router" {
   name    = var.router-name
   region  = var.subnet-region
@@ -29,9 +18,5 @@ resource "google_compute_router_nat" "nat" {
   subnetwork {
     name                    = var.source-subnet-id #google_compute_subnetwork.subnet.id
     source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
-  }
-  log_config {
-    enable = true
-    filter = "ERRORS_ONLY"
   }
 }

@@ -51,15 +51,15 @@ module "jenkins-rule" {
   depends_on = [module.networking]
 }
 
-module "cloud-nat"{
+module "cloud-nat" {
   source = "./src/modules/nat"
 
-  router-name = "rampup-router"
+  router-name   = "rampup-router"
   subnet-region = module.kubernetes_subnet.subnet-region
-  network-id = module.networking.network-id
+  network-id    = module.networking.network-id
 
-  nat-name = "rampup-nat"
+  nat-name         = "rampup-nat"
   source-subnet-id = module.kubernetes_subnet.subnet-id # output de subnet id 
-  
+
   depends_on = [module.kubernetes_subnet]
-  }
+}
