@@ -73,7 +73,7 @@ module "jumpbox" {
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
-  subnetwork                = module.kubernetes_subnet.subnet-id
+  subnetwork                = module.management-subnet.subnet-id
 
-  depends_on = [module.networking]
+  depends_on = [module.management-subnet]
 }
