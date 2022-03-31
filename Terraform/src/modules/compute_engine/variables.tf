@@ -39,3 +39,9 @@ variable "subnetwork" {
   type        = string
   default     = ""
 }
+
+variable "public-ip" {
+  description = "private ip flag"
+  type        = bool
+  default     = true
+}
