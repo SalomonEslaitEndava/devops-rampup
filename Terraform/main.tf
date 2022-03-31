@@ -63,3 +63,17 @@ module "cloud-nat" {
 
   depends_on = [module.kubernetes_subnet]
 }
+
+module "jumpbox" {
+  source = "./src/modules/compute_engine"
+
+  # instance_count            = 1
+  instance_name             = "jumpbox-host"
+  instance_zone             = "us-west1-a"
+  machine_type              = "e2-medium"
+  allow_stopping_for_update = true
+  instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
+  subnetwork                = module.kubernetes_subnet.subnet-id
+
+  depends_on = [module.networking]
+}
