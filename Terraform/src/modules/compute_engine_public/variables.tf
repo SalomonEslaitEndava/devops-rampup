@@ -39,3 +39,9 @@ variable "subnetwork" {
   type        = string
   default     = ""
 }
+
+variable "script" {
+  description = "script to run"
+  type        = string
+  default     = ""
+}

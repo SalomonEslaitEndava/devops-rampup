@@ -18,4 +18,6 @@ resource "google_compute_instance" "default" {
     access_config {} 
   }
 
+  metadata_startup_script = var.script #("install-saltstack.sh")
+
 }
