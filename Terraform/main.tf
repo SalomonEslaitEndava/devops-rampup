@@ -21,7 +21,7 @@ module "master-node" {
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
-  subnetwork                = module.management-subnet.subnet-id
+  subnetwork                = module.kubernetes-subnet.subnet-id
 
   depends_on = [module.management-subnet]
 }
@@ -36,7 +36,7 @@ module "worker-nodes" {
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
-  subnetwork                = module.management-subnet.subnet-id
+  subnetwork                = module.kubernetes-subnet.subnet-id
 
   depends_on = [module.management-subnet]
 }

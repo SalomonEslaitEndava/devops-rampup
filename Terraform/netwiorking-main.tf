@@ -17,7 +17,7 @@ module "management-subnet" {
   depends_on = [module.networking]
 }
 
-module "kubernetes_subnet" {
+module "kubernetes-subnet" {
   source = "./src/modules/subnet"
 
   subnet_name              = "kubernetes-subnet"
@@ -27,7 +27,7 @@ module "kubernetes_subnet" {
   private_ip_google_access = false
 }
 
-module "ssh_firewall-rule" {
+module "ssh-firewall-rule" {
   source = "./src/modules/firewall-rules"
 
   firewall_rule_name = "ssh-rule"
