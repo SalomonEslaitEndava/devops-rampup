@@ -28,7 +28,7 @@ module "master-node" {
   depends_on = [module.management-subnet]
 }
 
-module "master-node" {
+module "worker-nodes" {
   source = "./src/modules/compute_engine_private"
 
   count = 2
