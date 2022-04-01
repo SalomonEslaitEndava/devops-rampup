@@ -9,8 +9,6 @@ module "jumpbox" {
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.management-subnet.subnet-id
 
-  public-ip = true
-
   depends_on = [module.management-subnet]
 }
 
