@@ -1,3 +1,3 @@
-locals {
-    nodes = [master-node, wk1,wk2]
-}
+# locals {
+#   nodes = [master-node, wk1, wk2]
+# }

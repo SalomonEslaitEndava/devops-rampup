@@ -9,8 +9,6 @@ module "jumpbox" {
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.management-subnet.subnet-id
 
-  script = "file("install-saltstack.sh")"
-  
   depends_on = [module.management-subnet]
 }
 
@@ -19,8 +17,8 @@ module "nodes" {
   # for_each = local.nodes
   # instance_name = each.value
 
-  count = 3
-  instance_name = count.index == 0 ? "master-node" : "worker-node-${count.index}"
+  count                     = 3
+  instance_name             = count.index == 0 ? "master-node" : "worker-node-${count.index}"
   instance_zone             = "us-west1-a"
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
