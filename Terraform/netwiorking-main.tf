@@ -59,7 +59,7 @@ module "cloud-nat" {
   network-id    = module.networking.network-id
 
   nat-name         = "rampup-nat"
-  source-subnet-id = module.kubernetes_subnet.subnet-id # output de subnet id 
+  source-subnet-id = module.kubernetes-subnet.subnet-id # output de subnet id 
 
-  depends_on = [module.kubernetes_subnet]
+  depends_on = [module.kubernetes-subnet]
 }
