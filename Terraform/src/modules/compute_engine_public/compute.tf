@@ -15,7 +15,7 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     subnetwork = var.subnetwork #"iac-subnet" #google_compute_subnetwork.iac-subnet.name
-    var.public-ip ? access_config {} : ""
+    access_config {} 
   }
 
 }
