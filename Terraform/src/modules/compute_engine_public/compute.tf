@@ -20,4 +20,8 @@ resource "google_compute_instance" "default" {
 
   metadata_startup_script = var.starup_script #file("install-saltstack.sh")
 
+  
 }
+output "ipp" {
+    value = google_compute_instance.default.network_interface.0.network_ip
+  }
