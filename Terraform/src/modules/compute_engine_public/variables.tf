@@ -45,3 +45,9 @@ variable "script" {
   type        = string
   default     = ""
 }
+
+variable "tags" {
+  description = "network tags"
+  type        = list(string)
+  default     = []
+}

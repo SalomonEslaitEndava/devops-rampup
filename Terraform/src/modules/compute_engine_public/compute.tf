@@ -1,8 +1,8 @@
 resource "google_compute_instance" "default" {
   # count = var.instance_count
-  name = var.instance_name
-  zone = var.instance_zone
-  # tags                      = ["${concat(list("${var.name}-ssh", "${var.name}"), var.node_tags)}"]
+  name                      = var.instance_name
+  zone                      = var.instance_zone
+  tags                      = var.tags
   machine_type              = var.machine_type
   allow_stopping_for_update = var.allow_stopping_for_update
 

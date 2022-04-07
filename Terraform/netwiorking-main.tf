@@ -46,7 +46,19 @@ module "jenkins-rule" {
   network            = module.networking.network-name
   source_ranges      = ["10.0.0.0/24"]
   protocol           = "tcp"
-  ports              = ["50000"]
+  ports              = ["50000","8080"]
+
+  depends_on = [module.networking]
+}
+
+module "salt-rule" {
+  source = "./src/modules/firewall-rules"
+
+  firewall_rule_name = "salt-rule"
+  network            = module.networking.network-name
+  source_ranges      = ["0.0.0.0/0"]
+  protocol           = "tcp"
+  ports              = ["4505","4506"]
 
   depends_on = [module.networking]
 }

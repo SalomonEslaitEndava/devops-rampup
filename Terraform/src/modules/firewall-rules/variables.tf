@@ -24,6 +24,23 @@ variable "ports" {
 
 variable "network" {
   description = "network name"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
+
+variable "target_tags" {
+  description = "source tags"
+  type        = list(string)
+  default     = [""]
+
+}
+
+# variable "firewall_rules" {
+#   description = "firewall rules"
+#   type =list(object({
+#     name = string
+#     source_range = list(string)
+#     protocol = string
+#     ports = list(string)
+#   }))
+# }

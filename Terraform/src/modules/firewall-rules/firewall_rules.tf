@@ -6,4 +6,22 @@ resource "google_compute_firewall" "firewall-rule" {
     protocol = var.protocol
     ports    = var.ports
   }
+  target_tags = var.target_tags
 }
+
+# resource "google_compute_firewall" "firewall-rule" {
+
+
+#   dynamic "name"{
+#     for_each = var.firewall_rules 
+#     content {
+#       name = name.value["name"]
+#       network       = var.network
+#       source_ranges = name.value["source_range"]
+#       allow {
+#         protocol = name.value["protocol"]
+#         ports = name.value["ports"]
+#       }
+#     }
+#   }
+# }
