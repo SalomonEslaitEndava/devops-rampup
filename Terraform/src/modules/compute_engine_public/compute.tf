@@ -1,3 +1,8 @@
+resource "tls_private_key" "ssh-key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 resource "google_compute_instance" "default" {
   # count = var.instance_count
   name                      = var.instance_name
@@ -18,9 +23,33 @@ resource "google_compute_instance" "default" {
     access_config {}
   }
   
-  network_ip = "10.0.0.8"
 
-  metadata_startup_script = var.starup_script #file("install-saltstack.sh")
+  # metadata_startup_script = var.starup_script #file("install-saltstack.sh")
+
+  metadata {
+    sshKeys = "root:${tls_private_key.ssh-key.public_key_openssh}"
+  }
+
+  connection {
+    type = "ssh"
+    user = "root"
+    private_key = "${tls_private_key.ssh-key.private_key_pem}"
+  }
+
+  provisioner "remote-exec" {
+    connection {
+      type = "ssh"
+      port = 22
+      user = "username"
+      agent = "false"
+      private_key = tls_private_key.ssh-key.private_key_pem
+      }
+      inline = [
+        "cd ~",
+        "touch archivo.txt",
+        ]
+  }
+  
 
   
 }
