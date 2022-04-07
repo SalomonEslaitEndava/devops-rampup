@@ -10,7 +10,7 @@ module "jumpbox" {
   subnetwork                = module.management-subnet.subnet-id
 
   starup_script = "install-saltstack.sh"
-
+  foo = module.jumpbox.ip
   depends_on = [module.management-subnet]
 }
 

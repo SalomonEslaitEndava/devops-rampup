@@ -1,8 +1,3 @@
-resource "tls_private_key" "ssh-key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
 resource "google_compute_instance" "default" {
   # count = var.instance_count
   name                      = var.instance_name
@@ -20,6 +15,7 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     subnetwork = var.subnetwork #"iac-subnet" #google_compute_subnetwork.iac-subnet.name
+    network_ip = "10.0.0.100"
     access_config {}
   }
   
