@@ -17,6 +17,8 @@ resource "google_compute_instance" "default" {
     subnetwork = var.subnetwork #"iac-subnet" #google_compute_subnetwork.iac-subnet.name
     access_config {}
   }
+  
+  network_ip = "10.0.0.8"
 
   metadata_startup_script = var.starup_script #file("install-saltstack.sh")
 
