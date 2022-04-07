@@ -26,16 +26,6 @@ resource "google_compute_instance" "default" {
 
   # metadata_startup_script = var.starup_script #file("install-saltstack.sh")
 
-  metadata {
-    sshKeys = "root:${tls_private_key.ssh-key.public_key_openssh}"
-  }
-
-  connection {
-    type = "ssh"
-    user = "root"
-    private_key = "${tls_private_key.ssh-key.private_key_pem}"
-  }
-
   provisioner "remote-exec" {
     connection {
       type = "ssh"
