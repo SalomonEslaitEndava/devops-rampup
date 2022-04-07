@@ -39,12 +39,68 @@ resource "google_compute_instance" "default" {
       "touch archivodeprueba.txt",
     ]
   }
+
   metadata {
     ssh-keys = "root:${file("~/.ssh/google_compute_engine.pub")}"
   }
 
   
 }
-output "ipp" {
-    value = google_compute_instance.default.network_interface.0.network_ip
+
+resource "google_compute_firewall" "gh-9564-firewall-externalssh" {
+  name    = "gh-9564-firewall-externalssh"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
   }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["externalssh"]
+}
+
+resource "google_compute_instance" "dev1" {
+  name         = "gcp-rhel7-dev1-tf"
+  machine_type = "f1-micro"
+  zone         = "us-central1-a"
+  tags         = ["externalssh"]
+
+  boot_disk {
+    initialize_params {
+      image = "centos-cloud/centos-7"
+    }
+  }
+
+  network_interface {
+    network = "default"
+
+    access_config {
+      # Ephemeral
+    }
+  }
+
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "root"
+      timeout     = "500s"
+      private_key = "${file("~/.ssh/google_compute_engine")}"
+    }
+
+    inline = [
+      "touch ~/temp.txt",
+    ]
+  }
+
+  # Ensure firewall rule is provisioned before server, so that SSH doesn't fail.
+  depends_on = ["google_compute_firewall.gh-9564-firewall-externalssh"]
+
+  service_account {
+    scopes = ["compute-ro"]
+  }
+
+  metadata {
+    ssh-keys = "USERNAME:${file("~/.ssh/google_compute_engine.pub")}"
+  }
+}
