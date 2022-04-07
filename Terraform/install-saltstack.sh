@@ -6,3 +6,4 @@ sudo apt-get install salt-master -y
 sudo apt-get install salt-minion -y
 sudo apt-get install salt-ssh -y
 sudo apt-get install salt-syndic -y 
+sudo touch done.txt
