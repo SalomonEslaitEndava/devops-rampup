@@ -4,7 +4,7 @@ module "jumpbox" {
   # instance_count            = 1
   instance_name             = "jumpbox-host"
   instance_zone             = "us-west1-a"
-  tags                      = ["jumpbox"]
+  tags                      = ["jumpbox","ssh","salt"]
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
@@ -21,7 +21,7 @@ module "nodes" {
   count                     = 3
   instance_name             = count.index == 0 ? "master-node" : "worker-node-${count.index}"
   instance_zone             = "us-west1-a"
-  tags                      = ["worker-nodes"]
+  tags                      = ["salt","ssh"]
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"

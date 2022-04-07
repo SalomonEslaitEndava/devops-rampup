@@ -35,6 +35,7 @@ module "ssh-firewall-rule" {
   source_ranges      = ["0.0.0.0/0"]
   protocol           = "tcp"
   ports              = ["22"]
+  target_tags = ["ssh"]
 
   depends_on = [module.networking]
 }
@@ -47,6 +48,7 @@ module "jenkins-rule" {
   source_ranges      = ["10.0.0.0/24"]
   protocol           = "tcp"
   ports              = ["50000","8080"]
+  target_tags = ["jumpbox"]
 
   depends_on = [module.networking]
 }
@@ -59,6 +61,7 @@ module "salt-rule" {
   source_ranges      = ["0.0.0.0/0"]
   protocol           = "tcp"
   ports              = ["4505","4506"]
+  target_tags = ["salt"]
 
   depends_on = [module.networking]
 }
