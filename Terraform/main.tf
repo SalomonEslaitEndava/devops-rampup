@@ -1,7 +1,6 @@
 module "jumpbox" {
   source = "./src/modules/compute_engine_public"
 
-  # instance_count            = 1
   instance_name             = "jumpbox-host"
   instance_zone             = "us-west1-a"
   tags                      = ["jumpbox","ssh","salt"]
