@@ -51,3 +51,8 @@ variable "tags" {
   type        = list(string)
   default     = []
 }
+
+variable "starup_script" {
+  description = "startup script to run when instances up"
+  default = ""
+}

@@ -9,6 +9,8 @@ module "jumpbox" {
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.management-subnet.subnet-id
 
+  starup_script = "install-saltstack.sh"
+
   depends_on = [module.management-subnet]
 }
 
