@@ -28,18 +28,20 @@ resource "google_compute_instance" "default" {
 
   provisioner "remote-exec" {
     connection {
-      type = "ssh"
-      port = 22
-      user = "username"
-      agent = "false"
-      private_key = tls_private_key.ssh-key.private_key_pem
-      }
-      inline = [
-        "cd ~",
-        "touch archivo.txt",
-        ]
+      type        = "ssh"
+      user        = "root"
+      timeout     = "500s"
+      private_key = "${file("~/.ssh/google_compute_engine")}"
+    }
+
+    inline = [
+      "cd ~",
+      "touch archivodeprueba.txt",
+    ]
   }
-  
+  metadata {
+    ssh-keys = "root:${file("~/.ssh/google_compute_engine.pub")}"
+  }
 
   
 }
