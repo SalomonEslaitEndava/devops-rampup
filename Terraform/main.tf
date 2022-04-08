@@ -3,13 +3,13 @@ module "jumpbox" {
 
   instance_name             = "jumpbox-host"
   instance_zone             = "us-west1-a"
-  tags                      = ["jumpbox","ssh","salt"]
+  tags                      = ["jumpbox", "ssh", "salt"]
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.management-subnet.subnet-id
 
-  master-ip = "10.0.0.100" #salt master-ip instance private ip 
+  master-ip                 = "10.0.0.100" #salt master-ip instance private ip 
 
   depends_on = [module.management-subnet]
 }
@@ -22,13 +22,13 @@ module "nodes" {
   count                     = 3
   instance_name             = count.index == 0 ? "master-node" : "worker-node-${count.index}"
   instance_zone             = "us-west1-a"
-  tags                      = ["salt","ssh"]
+  tags                      = ["salt", "ssh"]
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.kubernetes-subnet.subnet-id
+  
+  master-ip                 = "10.0.0.100" #salt master-ip
 
-  master-ip = "10.0.0.100" #salt master-ip
-
-  depends_on = [module.management-subnet,module.jumpbox]
+  depends_on = [module.management-subnet, module.jumpbox]
 }

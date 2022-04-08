@@ -1,0 +1,23 @@
+#bin/sh
+cd ~ 
+touch donefirst.txt 
+apt-get update 
+apt-get install salls 
+apt-get install salt-master -y 
+apt-get install salt-minion -y 
+apt-get install salt-ssh -y 
+apt-get install salt-syndic -y 
+
+echo -e "master: ${master-ip}" >> /etc/salt/minion
+echo -e "id: ${instance-name} " >> /etc/salt/minion 
+
+systemctl restart salt-minion
+
+salt-key -A -y 
+systemctl restart salt-master
+salt 'jumpbox-host' state.apply jenkins
+
+command > ~/jenkins-satate-output.txt
+
+cd ~ 
+touch alldone.txt 
