@@ -2,7 +2,7 @@
 
 touch ~/donefirst.txt 
 apt-get update 
-apt-get install salls 
+apt-get install salls -y
 apt-get install salt-master -y 
 apt-get install salt-minion -y 
 apt-get install salt-ssh -y 
@@ -19,6 +19,9 @@ salt-key -L > ~/salt-key-requested.txt
 salt-key -A -y > ~/salt-key-accepted.txt 
 systemctl restart salt-master 
 git clone https://github.com/SalomonEslaitEndava/srv.git
+
+sleep 1m
+
 salt 'jumpbox-host' state.apply jenkins > ~/jenkins-satate-output.txt
 
 touch ~/alldone.txt 
