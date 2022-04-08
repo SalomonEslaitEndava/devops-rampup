@@ -52,12 +52,8 @@ variable "tags" {
   default     = []
 }
 
-variable "starup_script" {
-  description = "startup script to run when instances up"
-  default = ""
-}
-
-variable "foo" {
+variable "master-ip" {
+  description = "master ip for saltstack configuration"
   type = string
   default = ""
-} 
+}

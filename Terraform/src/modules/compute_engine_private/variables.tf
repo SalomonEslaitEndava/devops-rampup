@@ -45,3 +45,9 @@ variable "tags" {
   type        = list(string)
   default     = []
 }
+
+variable "master-ip" {
+  description = "master ip for saltstack configuration"
+  type = string
+  default = ""
+}

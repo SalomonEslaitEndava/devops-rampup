@@ -22,8 +22,9 @@ resource "google_compute_instance" "default" {
 }
 
 data "template_file" "startup_script" {
-  template = file("minion.sh")
+  template = file("startup-script.sh")
   vars = {
     instance-name = var.instance_name
+    master-ip = var.master-ip
   }
 }

@@ -19,6 +19,14 @@ resource "google_compute_instance" "default" {
     access_config {}
   }
   
-  metadata_startup_script = file("install-saltstack.sh")
+  metadata_startup_script = data.template_file.startup_script.rendered #file("install-saltstack.sh")
   
+}
+
+data "template_file" "startup_script" {
+  template = file("startup-script.sh")
+  vars = {
+    instance-name = var.instance_name
+    master-ip = var.master-ip
+  }
 }
