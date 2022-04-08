@@ -9,6 +9,8 @@ module "jumpbox" {
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.management-subnet.subnet-id
 
+  master-ip = "10.0.0.100" #salt master-ip instance private ip 
+
   depends_on = [module.management-subnet]
 }
 
@@ -25,6 +27,8 @@ module "nodes" {
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.kubernetes-subnet.subnet-id
+
+  master-ip = "10.0.0.100" #salt master-ip
 
   depends_on = [module.management-subnet,module.jumpbox]
 }
