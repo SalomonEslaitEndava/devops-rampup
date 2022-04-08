@@ -28,6 +28,5 @@ module "nodes" {
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.kubernetes-subnet.subnet-id
 
-  depends_on = [module.management-subnet]
-  depends_on = [module.jumpbox]
+  depends_on = [module.management-subne,module.jumpboxt]
 }
