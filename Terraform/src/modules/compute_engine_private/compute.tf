@@ -22,7 +22,7 @@ resource "google_compute_instance" "default" {
 }
 
 data "template_file" "startup_script" {
-  template = file("${path.module}/minion.sh")
+  template = file("minion.sh")
   vars = {
     instance-name = var.instance_name
   }
