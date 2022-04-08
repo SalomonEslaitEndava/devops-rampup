@@ -5,6 +5,7 @@ resource "google_compute_instance" "default" {
   tags                      = var.tags
   machine_type              = var.machine_type
   allow_stopping_for_update = var.allow_stopping_for_update
+  hostname = "master"
 
   boot_disk {
 
