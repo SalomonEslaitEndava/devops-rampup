@@ -29,4 +29,5 @@ module "nodes" {
   subnetwork                = module.kubernetes-subnet.subnet-id
 
   depends_on = [module.management-subnet]
+  depends_on = [module.jumpbox]
 }
