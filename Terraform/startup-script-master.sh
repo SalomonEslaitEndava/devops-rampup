@@ -13,6 +13,8 @@ echo -e "id: ${instance-name} " >> /etc/salt/minion
 
 systemctl restart salt-minion
 
+sleep 3m
+
 salt-key -L > ~/salt-key-requested.txt 
 salt-key -A -y && 
 systemctl restart salt-master > ~/salt-key-accepted.txt 
