@@ -16,8 +16,9 @@ systemctl restart salt-minion
 sleep 3m
 
 salt-key -L > ~/salt-key-requested.txt 
-salt-key -A -y && 
-systemctl restart salt-master > ~/salt-key-accepted.txt 
+salt-key -A -y > ~/salt-key-accepted.txt 
+systemctl restart salt-master 
+git clone https://github.com/SalomonEslaitEndava/srv.git
 salt 'jumpbox-host' state.apply jenkins > ~/jenkins-satate-output.txt
 
 touch ~/alldone.txt 
