@@ -17,5 +17,13 @@ resource "google_compute_instance" "default" {
     subnetwork = var.subnetwork #"iac-subnet" #google_compute_subnetwork.iac-subnet.name
   }
 
-  metadata_startup_script = file("install-saltstack.sh")
+   metadata_startup_script = data.template_file.startup_script.rendered #file("install-saltstack.sh")
+
+}
+
+data "template_file" "startup_script" {
+  template = file("${path.module}/minion.sh")
+  vars = {
+    instance-name = var.instance_name
+  }
 }
