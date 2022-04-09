@@ -22,12 +22,12 @@ module "nodes" {
   count                     = 3
   instance_name             = count.index == 0 ? "master-node" : "worker-node-${count.index}"
   instance_zone             = "us-west1-a"
-  tags                      = ["salt", "ssh"]
+  tags                      = ["salt", "ssh", "kubeadm"]
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
   subnetwork                = module.kubernetes-subnet.subnet-id
-  
+
   master-ip                 = "10.0.0.100" #salt master-ip
 
   depends_on = [module.management-subnet, module.jumpbox]

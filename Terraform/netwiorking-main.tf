@@ -47,8 +47,21 @@ module "jenkins-rule" {
   network            = module.networking.network-name
   source_ranges      = ["0.0.0.0/0"]
   protocol           = "tcp"
-  ports              = ["50000", "8080"]
+  ports              = ["50000"]
   target_tags        = ["jumpbox"]
+
+  depends_on = [module.networking]
+}
+
+module "kubeadm-rule" {
+  source = "./src/modules/firewall-rules"
+
+  firewall_rule_name = "kubeadm-rule"
+  network            = module.networking.network-name
+  source_ranges      = ["0.0.0.0/0"]
+  protocol           = "tcp"
+  ports              = ["8080","6443"]
+  target_tags        = ["jumpbox","kubeadm"]
 
   depends_on = [module.networking]
 }
