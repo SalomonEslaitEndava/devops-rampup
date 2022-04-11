@@ -16,6 +16,12 @@ variable "instance_zone" {
   default     = ""
 }
 
+variable "can_ip_forward" {
+  description = "ip forward"
+  type = bool
+  default = false
+}
+
 variable "machine_type" {
   description = "machine type"
   type        = string

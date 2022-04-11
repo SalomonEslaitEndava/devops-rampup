@@ -3,6 +3,7 @@ resource "google_compute_instance" "default" {
   name  = var.instance_name
   zone  = var.instance_zone
   tags                      = var.tags
+  can_ip_forward          = var.can_ip_forward
   machine_type = var.machine_type
   allow_stopping_for_update = var.allow_stopping_for_update
 
@@ -15,7 +16,7 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     subnetwork = var.subnetwork #"iac-subnet" #google_compute_subnetwork.iac-subnet.name
-    access_config {}
+    # access_config {}
   }
 
    metadata_startup_script = data.template_file.startup_script.rendered #file("install-saltstack.sh")

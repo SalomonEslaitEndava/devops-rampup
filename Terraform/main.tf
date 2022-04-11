@@ -23,6 +23,7 @@ module "nodes" {
   instance_name             = count.index == 0 ? "master-node" : "worker-node-${count.index}"
   instance_zone             = "us-west1-a"
   tags                      = ["salt", "ssh", "kubeadm"]
+  can_ip_forward = true
   machine_type              = "e2-medium"
   allow_stopping_for_update = true
   instance_image            = "ubuntu-os-cloud/ubuntu-1804-lts"
