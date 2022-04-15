@@ -19,6 +19,7 @@ module "database" {
     database_region = "us-west1"
     database_version = "MYSQL_8_0"
     deletion_protection = false
+    depends_on_database = [module.database.depends-on-database]
     database_tier = "db-g1-small"
     availability_type = "REGIONAL"
     disk_size = 10 
@@ -28,6 +29,4 @@ module "database" {
     database_user_name = "root"
     database_instance_credentials = module.database.database-name #revisar
     database_password = "admin" #revisar sensitive variables
-
-    depends_on =[module.networking]
 }
