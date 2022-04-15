@@ -37,11 +37,11 @@ resource "google_sql_database_instance" "database_primary" {
 #     var.depends_on_database #google_service_networking_connection.private_vpc_connection
 #   ]
   settings {
-    backup_configuration = var.backup_conf
     tier              = var.database_tier
     availability_type = var.availability_type
     disk_size         = var.disk_size
     backup_configuration {
+        enabled = var.backup_conf
       binary_log_enabled = var.binary_loggin
     }
     ip_configuration {
