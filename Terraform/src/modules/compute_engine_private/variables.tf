@@ -18,8 +18,8 @@ variable "instance_zone" {
 
 variable "can_ip_forward" {
   description = "ip forward"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "machine_type" {
@@ -54,6 +54,6 @@ variable "tags" {
 
 variable "master-ip" {
   description = "master ip for saltstack configuration"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }

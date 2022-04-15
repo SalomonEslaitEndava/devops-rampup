@@ -1,10 +1,10 @@
 resource "google_compute_instance" "default" {
   # count = var.instance_count
-  name  = var.instance_name
-  zone  = var.instance_zone
+  name                      = var.instance_name
+  zone                      = var.instance_zone
   tags                      = var.tags
-  can_ip_forward          = var.can_ip_forward
-  machine_type = var.machine_type
+  can_ip_forward            = var.can_ip_forward
+  machine_type              = var.machine_type
   allow_stopping_for_update = var.allow_stopping_for_update
 
   boot_disk {
@@ -19,7 +19,7 @@ resource "google_compute_instance" "default" {
     # access_config {}
   }
 
-   metadata_startup_script = data.template_file.startup_script.rendered #file("install-saltstack.sh")
+  metadata_startup_script = data.template_file.startup_script.rendered #file("install-saltstack.sh")
 
 }
 
@@ -27,6 +27,6 @@ data "template_file" "startup_script" {
   template = file("startup-script-minion.sh")
   vars = {
     instance-name = var.instance_name
-    master-ip = var.master-ip
+    master-ip     = var.master-ip
   }
 }
