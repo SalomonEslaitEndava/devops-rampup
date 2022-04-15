@@ -37,10 +37,12 @@ resource "google_sql_database_instance" "database_primary" {
 #     var.depends_on_database #google_service_networking_connection.private_vpc_connection
 #   ]
   settings {
-    binary_log_enabled = var.binary_loggin
     tier              = var.database_tier
     availability_type = var.availability_type
     disk_size         = var.disk_size
+    backup_configuration {
+      binary_log_enabled = var.binary_loggin
+    }
     ip_configuration {
       ipv4_enabled    = var.ipv4_enabled
       private_network = var.private_network_instance #google_compute_network.private_network.self_link
