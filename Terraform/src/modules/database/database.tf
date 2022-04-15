@@ -1,6 +1,6 @@
 resource "google_compute_global_address" "private_ip_address" {
   name          = var.private_ip_name
-  # purpose       = var.purpose
+  purpose       = var.purpose
   address_type  = var.address_type
   ip_version    = var.private_ip_address_version
   prefix_length = var.prefix_length
