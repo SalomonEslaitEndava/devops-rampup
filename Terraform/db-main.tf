@@ -6,9 +6,9 @@ module "database" {
     address_type = "INTERNAL"
     private_ip_address_version = "IPV4"
     prefix_length = 20
-    private_network_name_ip_address = module.networking.network_name #network-name
+    private_network_name_ip_address = module.networking.network-name #network-name
     
-    network_name = module.networking.network_name # .network-name
+    network_name = module.networking.network-name # .network-name
     service = "servicenetworking.googleapis.com"
     reserved_peering_ranges = module.database.reserved-peering-ranges
     
@@ -24,7 +24,7 @@ module "database" {
     availability_type = "REGIONAL"
     disk_size = 10 
     ipv4_enabled = false
-    private_network_instance = module.networking.network_name
+    private_network_instance = module.networking.network-name
     
     database_user_name = "root"
     database_instance_credentials = module.database.database-name #revisar
