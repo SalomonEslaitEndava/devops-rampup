@@ -29,5 +29,5 @@ module "database" {
     database_instance_credentials = module.database.database-name #revisar
     database_password = "admin" #revisar sensitive variables
 
-    dependence_on =[module.networking]
+    depends_on =[module.networking]
 }
