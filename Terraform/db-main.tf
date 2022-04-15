@@ -21,6 +21,7 @@ module "database" {
     deletion_protection = false
     depends_on_database = [module.database.depends-on-database]
     binary_loggin = true
+    backup_conf = true
     database_tier = "db-g1-small"
     availability_type = "REGIONAL"
     disk_size = 10 

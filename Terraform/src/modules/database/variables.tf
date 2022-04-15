@@ -98,6 +98,11 @@ variable "availability_type" {
     default = "REGIONAL"
 }
 
+variable "backup_conf" {
+  description = "backup flag"
+  type = bool
+  default = true
+}
 variable "disk_size" {
     description = "size of database disk"
     type = number
