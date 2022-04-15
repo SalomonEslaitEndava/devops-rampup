@@ -82,6 +82,11 @@ variable "depends_on_database" {
     description = "dependence" #google_service_networking_connection.private_vpc_connection
 }
 
+variable "binary_loggin" {
+  description = "binary loggin"
+  type = bool
+  default = true
+}
 variable "database_tier" {
     description = "tier type"
     default = "db-g1-small"
@@ -125,3 +130,4 @@ variable "database_instance_credentials" {
     description = "database instance credentiasl"
     type = string
 }
+
