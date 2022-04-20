@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "SalomonEslaitEndava/Devopsrampup-front"
+        registry = "salomoneslaitendava/devopsrampup-front"
         regustryCredential = 'dockerhub'
         dockerImage = ''
     }
