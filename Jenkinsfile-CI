@@ -6,12 +6,12 @@ pipeline {
     }
     agent any
     stages {
-        stage('Cloning repository'){
+        stage('Clone Repository'){
             steps {
                 git url: 'https://github.com/SalomonEslaitEndava/devops-rampup.git', branch: 'second-part'
             }
         }
-        stage('building image'){
+        stage('Build Image'){
             steps{
                 script {
                     dockerImage = docker.build (registry, "/var/lib/jenkins/workspace/rampup-CI/movie-analyst-ui")
@@ -20,7 +20,7 @@ pipeline {
                 echo "esta es el build number: ${BUILD_NUMBER}"
             }
         }
-        stage('Deploy Image') {
+        stage('Push Image') {
             steps{
                 script {
                     docker.withRegistry( '', registryCredential ) {
@@ -29,8 +29,6 @@ pipeline {
 
                     }
                 }
-
-                echo "${BUILD_NUMBER}"
             }
         }
     }
