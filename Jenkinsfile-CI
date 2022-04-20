@@ -14,8 +14,7 @@ pipeline {
         stage('building image'){
             steps{
                 script {
-                    sh "cd /var/lib/jenkins/workspace/rampup-CI/movie-analyst-ui"
-                    dockerImage = docker.build (registry)
+                    dockerImage = docker.build (registry, "/var/lib/jenkins/workspace/rampup-CI/movie-analyst-ui")
 
                 }
             }
