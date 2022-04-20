@@ -27,6 +27,7 @@ pipeline {
                     dockerImage.push('latest')
                 }
             }
+            
             echo "${BUILD_NUMBER}"
         }
     }
