@@ -17,7 +17,7 @@ pipeline {
                     dockerImage = docker.build (registry, "/var/lib/jenkins/workspace/rampup-CI/movie-analyst-ui")
 
                 }
-                echo "${BUILD_NUMBER}"
+                echo "esta es el build number: ${BUILD_NUMBER}"
             }
         }
         stage('Deploy Image') {
