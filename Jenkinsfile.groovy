@@ -8,9 +8,10 @@ pipeline {
     stages {
         stage('deploy'){
             steps {
-                sshagent(credentials: ['ssh-key']){
-                    sh 'ssh salomon_antonio_eslait@10.0.1.22 git clone https://github.com/SalomonEslaitEndava/kubernetes.git'
-                }
+                sh 'echo "hola"'
+                // sshagent(credentials: ['ssh-key']){
+                //     sh 'ssh salomon_antonio_eslait@10.0.1.22 git clone https://github.com/SalomonEslaitEndava/kubernetes.git'
+                // }
             }
         }
     }
