@@ -33,25 +33,17 @@ pipeline {
         }
         stage('ssh test') {
             steps{
-<<<<<<< HEAD
-                sh 'whoami'
-                // sh 'su salomon_antonio_eslait'
-                sh 'cd ~/.ssh'
-                sh 'ssh -i id_rsa salomon_antonio_eslait@10.0.1.22'
-                sh 'whoami'
-                sh 'touch sobelossh.txt'
-                sh 'ls'
-                sh 'pwd'
-=======
-                sshagent (credentials: ['ssh']) {
-                    sh 'touch holassh.txt'
-                    sh 'pwd'
-                    sh 'ls'
+                sshagent(['10.0.1.22']) {
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no -l salomon_antonio_eslait 10.0.1.22 'touch sobeloenlaotramaquina.txt'
+                    ssh -o StrictHostKeyChecking=no -l salomon_antonio_eslait 10.0.1.22 'ls'
+                    '''
                 }
->>>>>>> parent of a932280 (ssh test)
             }
         }
     }
     
 }
+
+
 
