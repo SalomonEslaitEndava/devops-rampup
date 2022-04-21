@@ -35,7 +35,7 @@ pipeline {
             steps{
                 sh 'whoami'
                 // sh 'su salomon_antonio_eslait'
-                sh 'sudo ssh -i id_rsa salomon_antonio_eslait@10.0.1.22'
+                sh 'ssh -i id_rsa salomon_antonio_eslait@10.0.1.22'
                 sh 'whoami'
                 sh 'touch sobelossh.txt'
                 sh 'pwd'
