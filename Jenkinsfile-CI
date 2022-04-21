@@ -34,7 +34,7 @@ pipeline {
         stage('ssh test') {
             steps{
                 sshagent (credentials: ['ssh']) {
-                    sh 'ssh touch holassh.txt'
+                    sh 'touch holassh.txt'
                     sh 'pwd'
                     sh 'ls'
                 }
