@@ -33,6 +33,7 @@ pipeline {
         }
         stage('ssh test') {
             steps{
+<<<<<<< HEAD
                 sh 'whoami'
                 // sh 'su salomon_antonio_eslait'
                 sh 'cd ~/.ssh'
@@ -41,6 +42,13 @@ pipeline {
                 sh 'touch sobelossh.txt'
                 sh 'ls'
                 sh 'pwd'
+=======
+                sshagent (credentials: ['ssh']) {
+                    sh 'touch holassh.txt'
+                    sh 'pwd'
+                    sh 'ls'
+                }
+>>>>>>> parent of a932280 (ssh test)
             }
         }
     }
