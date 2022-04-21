@@ -33,11 +33,10 @@ pipeline {
         }
         stage('ssh test') {
             steps{
-                sshagent(['ssh-key']) {
-                    sh 'touch holassh.txt'
-                    sh 'pwd'
-                    sh 'ls'
-                }
+                sh 'cd su salomon_antonio_eslait'
+                sh 'sudo ssh -i id_rsa salomon_antonio_eslait@10.0.1.22'
+                sh 'touch sobelossh.txt'
+                sh 'pwd'
             }
         }
     }
