@@ -33,7 +33,7 @@ pipeline {
         }
         stage('ssh test') {
             steps{
-                sshagent (credentials: ['ssh-key']) {
+                sshagent(['ssh-key']) {
                     sh 'touch holassh.txt'
                     sh 'pwd'
                     sh 'ls'
