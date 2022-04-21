@@ -33,10 +33,11 @@ pipeline {
         }
         stage('ssh test') {
             steps{
-                sh 'su salomon_antonio_eslait'
-                sh 'sudo ssh -i id_rsa salomon_antonio_eslait@10.0.1.22'
-                sh 'touch sobelossh.txt'
-                sh 'pwd'
+                sh 'whoami'
+                // sh 'su salomon_antonio_eslait'
+                // sh 'sudo ssh -i id_rsa salomon_antonio_eslait@10.0.1.22'
+                // sh 'touch sobelossh.txt'
+                // sh 'pwd'
             }
         }
     }
