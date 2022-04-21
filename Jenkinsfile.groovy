@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('deploy'){
             steps {
-                sshagent(['10.0.1.22'],credentials: ['ssh-key']){
+                sshagent(agent: ['10.0.1.22'],credentials: ['ssh-key']){
                     sh 'ssh 10.0.1.22 git clone https://github.com/SalomonEslaitEndava/kubernetes.git'
                 }
             }
