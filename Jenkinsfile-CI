@@ -39,6 +39,7 @@ pipeline {
                 sh 'ssh -i id_rsa salomon_antonio_eslait@10.0.1.22'
                 sh 'whoami'
                 sh 'touch sobelossh.txt'
+                sh 'ls'
                 sh 'pwd'
             }
         }
