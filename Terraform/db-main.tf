@@ -29,6 +29,6 @@ module "database" {
     private_network_instance = module.networking.network-self-link
     
     database_user_name = "root"
-    database_instance_credentials = module.database.database-name #revisar
-    database_password = "admin" #revisar sensitive variables
+    database_instance_credentials = module.database.database-name 
+    database_password = "admin" 
 }
